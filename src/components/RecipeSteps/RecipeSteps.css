@@ -1,0 +1,13 @@
+.step-number {
+    width: 75px;
+    height: 75px;
+    background-color: #74C7AB;
+}
+
+.step-description {
+    width: fit-content;
+}
+
+.step.row {
+    flex-wrap: nowrap;
+}
