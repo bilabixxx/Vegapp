@@ -123,7 +123,7 @@ Swiper is the most modern free mobile touch slider with hardware accelerated tra
 
 ## TEST THE APPLICATION
 
-Want to try the application? You can try the app on [Netlify](https://main--willowy-sunflower-5c565c.netlify.app/)
+Want to try the application? You can try the app on [Netlify](https://vegapp.netlify.app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

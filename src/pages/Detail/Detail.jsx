@@ -13,8 +13,8 @@ export const Detail = () => {
   const [data, setData] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const API_KEY = "24e8eefed1cf45608cf05cf96e958cb1";
-  //const APP_KEY = '62c751ac972e43aab21ffddfba0e916b';
+  const API_KEY = "62c751ac972e43aab21ffddfba0e916b";
+  //const APP_KEY = '24e8eefed1cf45608cf05cf96e958cb1';
   const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`;
   let steps = [];
 
