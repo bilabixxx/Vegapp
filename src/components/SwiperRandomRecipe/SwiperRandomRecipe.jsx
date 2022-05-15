@@ -18,6 +18,7 @@ const SwiperRandomRecipe = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     const APP_KEY = '24e8eefed1cf45608cf05cf96e958cb1';
+    //const APP_KEY = '62c751ac972e43aab21ffddfba0e916b';
     let url = `https://api.spoonacular.com/recipes/random?apiKey=${APP_KEY}&number=10&tags=vegetarian`;
 
     useEffect(() => {

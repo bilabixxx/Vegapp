@@ -17,10 +17,9 @@ export const Home = () => {
   useEffect(() => {
     getRecipe();
   }, [query])
-  //62c751ac972e43aab21ffddfba0e916b
-  //24e8eefed1cf45608cf05cf96e958cb1
   const getRecipe = () => {
     const APP_KEY = '24e8eefed1cf45608cf05cf96e958cb1';
+    //const APP_KEY = '62c751ac972e43aab21ffddfba0e916b';
     let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_KEY}&query=${query}&diet=vegetarian`;
     axios.get(url)
       .then((res) => {
