@@ -1,7 +1,8 @@
 import React from 'react'
-import './Error.css'
+import './Error.scss'
 
 export const Error = () => {
+
   return (
     <div className='text-center'>
       <p className='error-code'>404</p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './IconList.css'
+import './IconList.scss'
 
 const IconList = (props) => {
     return (

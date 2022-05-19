@@ -1,37 +1,29 @@
-import React from 'react';
 import IngredientsList from '../../components/IngredientsList/IngredientsList';
 import RecipeSteps from '../../components/RecipeSteps/RecipeSteps';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import './Detail.css';
+import './Detail.scss';
 import IconList from '../../components/IconList/IconList';
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useAxios } from "use-axios-client";
+import Loading from '../../components/Loading/Loading'
+
+
 
 
 export const Detail = () => {
-  const [data, setData] = useState(null);
   const { id } = useParams();
-  const navigate = useNavigate();
-  const API_KEY = "62c751ac972e43aab21ffddfba0e916b";
-  //const APP_KEY = '24e8eefed1cf45608cf05cf96e958cb1';
-  const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`;
+  const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_APP_KEY}&includeNutrition=false`;
   let steps = [];
 
-  useState(() => {
-    axios.get(url)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch(() => {
-        navigate("/*");
-      })
-  }, [url])
+  const { data, error, loading } = useAxios({ url });
 
-  if (data) {
+  if (loading || !data) return <Loading />;
+  if (error) return <p className='text-center'>Error + {error.status}</p>;
+
+
     return (
+    
       <>
-        <div className="header-detail text-center">
+         <div className="header-detail text-center">
           <h1 className="my-5 title">{data.title}</h1>
           <img className="mt-3" src={data.image} />
           <IconList time={data.readyInMinutes} serving={data.servings} price={data.pricePerServing} health={data.healthScore} />
@@ -43,15 +35,12 @@ export const Detail = () => {
         </div>
         <div className='ingredients-container mt-5 mx-auto row row-cols-4'>
           <ul className='mt-5 mx-auto row'>
-            {data.extendedIngredients.map(ingredient => {
+            {data.extendedIngredients.map((ingredient, index) => {
 
-              return <IngredientsList key={ingredient.id} name={ingredient.name} measures={ingredient.measures.metric.amount} unit={ingredient.measures.metric.unitShort} />
+              return <IngredientsList key={index} name={ingredient.name} measures={ingredient.measures.metric.amount} unit={ingredient.measures.metric.unitShort} />
             })}
           </ul>
         </div>
-
-
-
         <div className='d-flex flex-column align-items-center m-auto mt-5'>
           {
             data.analyzedInstructions.map(instruction => {
@@ -62,8 +51,8 @@ export const Detail = () => {
           }
 
           {
-            steps.map(step => {
-              return <RecipeSteps key={step.number} number={step.number} step={step.step} />
+            steps.map((step, index )=> {
+              return <RecipeSteps key={index} number={step.number} step={step.step} />
             })
           }
         </div>
@@ -71,6 +60,4 @@ export const Detail = () => {
     )
   }
 
-
-
-}
+  

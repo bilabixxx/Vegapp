@@ -119,6 +119,10 @@ Axios is a Javascript library used to make HTTP requests from XMLHttpRequests fr
 
 Swiper is the most modern free mobile touch slider with hardware accelerated transitions and amazing native behavior. It is intended to be used in mobile websites, mobile web apps, and mobile native/hybrid apps.
 
+#### USE AXIOS CLIENT
+
+Used to make axios requests in React using hooks.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## TEST THE APPLICATION

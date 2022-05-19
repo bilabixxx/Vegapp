@@ -2,34 +2,23 @@ import React from 'react'
 
 import { Navigation, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
-import axios from 'axios';
 import RecipCard from '../RecipCard/RecipCard';
-import { useNavigate } from "react-router-dom";
-import './SwiperRandomRecipe.css'
+import { useAxios } from "use-axios-client";
+import './SwiperRandomRecipe.scss'
+import Loading from '../Loading/Loading';
 
 
 const SwiperRandomRecipe = () => {
-    const [data, setData] = useState([]);
-    const navigate = useNavigate();
-    const APP_KEY = '62c751ac972e43aab21ffddfba0e916b';
-    //const APP_KEY = '24e8eefed1cf45608cf05cf96e958cb1';
-    let url = `https://api.spoonacular.com/recipes/random?apiKey=${APP_KEY}&number=10&tags=vegetarian`;
+    let url = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_APP_KEY}&number=10&tags=vegetarian`;
+    const { data, error, loading } = useAxios({ url });
 
-    useEffect(() => {
-        axios.get(url)
-            .then((res) => {
-                setData(res.data.recipes);
-            })
-            .catch(() => {
-                navigate("/*");
-            })
-    }, [])
+    if (loading || !data) return <Loading />;
+    if (error) return <p className='text-center'>Error + {error.status}</p>;
 
     return (
         <>
@@ -55,10 +44,10 @@ const SwiperRandomRecipe = () => {
                 }}
             >
                 {
-                    data.map(recipe => {
+                    data.recipes.map((recipe, index) => {
                         return (
                             <SwiperSlide key={recipe.id}>
-                                <RecipCard key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} />
+                                <RecipCard key={index} id={recipe.id} title={recipe.title} image={recipe.image} />
                             </SwiperSlide>
                         )
                     })

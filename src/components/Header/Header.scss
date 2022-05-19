@@ -1,0 +1,36 @@
+.header {
+    background-color: #74C7AB;
+    width: 80%;
+}
+
+.logo {
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    background: #fff;
+    padding: 1rem;
+}
+
+.big {
+    color: #74C7AB;
+    font-size: 4rem;
+}
+
+.menu-item {
+    color: #282c34;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    color: #282c34;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+    .header {
+        flex-direction: column;
+    }
+    .menu-item {
+        margin-left: 0 !important;
+    }
+  }

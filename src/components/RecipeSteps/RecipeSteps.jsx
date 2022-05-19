@@ -1,5 +1,5 @@
 import React from 'react'
-import './RecipeSteps.css'
+import './RecipeSteps.scss'
 const RecipeSteps = (props) => {
   return (
     <div className='step d-flex mb-3 row'>

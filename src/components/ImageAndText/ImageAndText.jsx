@@ -1,5 +1,5 @@
 import React from 'react'
-import './ImageAndText.css'
+import './ImageAndText.scss'
 import cover from '../../assets/vegan-cover.jpg'
 
 const ImageAndText = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import './IngredientsList.css'
+import './IngredientsList.scss'
 
 const IngredientsList = (props) => {
   return (
